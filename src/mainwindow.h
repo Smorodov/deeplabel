@@ -10,7 +10,7 @@
 #include <QTemporaryDir>
 #include <QScrollArea>
 #include <QScreen>
-#include <QtConcurrent>
+#include <QtConcurrent/QtConcurrent>
 #include <QProgressDialog>
 
 #include <opencv2/opencv.hpp>

@@ -1,4 +1,18 @@
 #include "darknetexporter.h"
+#include <algorithm>
+
+double clamp(double v, double bottom, double top)
+{
+    if (v > top)
+    {
+        return top;
+    }
+    if (v < bottom)
+    {
+        return bottom;
+    }
+    return v;
+}
 
 void DarknetExporter::generateLabelIds(const QString names_file){
     id_map.clear();
@@ -48,10 +62,10 @@ void DarknetExporter::writeLabels(const cv::Mat &image, const QString label_file
                 continue;
             }
 
-            double x = std::clamp(static_cast<double>(label.rect.center().x())/image.cols, 0.0, 0.999);
-            double y = std::clamp(static_cast<double>(label.rect.center().y())/image.rows, 0.0, 0.999);
-            double width = std::clamp(static_cast<double>(label.rect.width())/image.cols, 0.0, 0.999);
-            double height = std::clamp(static_cast<double>(label.rect.height())/image.rows, 0.0, 0.999);
+            double x = clamp(static_cast<double>(label.rect.center().x())/image.cols, 0.0, 0.999);
+            double y = clamp(static_cast<double>(label.rect.center().y())/image.rows, 0.0, 0.999);
+            double width = clamp(static_cast<double>(label.rect.width())/image.cols, 0.0, 0.999);
+            double height = clamp(static_cast<double>(label.rect.height())/image.rows, 0.0, 0.999);
 
             text += QString("%1").arg(id_map[label.classname.toLower()]);
             text += QString(" %1").arg(x);

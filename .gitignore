@@ -1,4 +1,5 @@
 build/
+vs2019/
 *.pro.user*
 Makefile
 ui_*

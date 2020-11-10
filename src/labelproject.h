@@ -6,10 +6,10 @@
 #include <QDir>
 #include <QDirIterator>
 
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlRecord>
-#include <QSqlError>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlRecord>
+#include <QtSql/QSqlError>
 #include <QMutex>
 #include <QMutexLocker>
 #include <QThread>
